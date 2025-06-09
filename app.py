@@ -5,12 +5,7 @@ import os
 app = Flask(__name__)
 CORS(app)
 
-latest_data = {
-    'type': '',
-    'vehicle': '',
-    'time_minutes': 0,
-    'time_seconds': 0.0
-}
+latest_data = {}
 
 @app.route('/aggiorna', methods=['POST'])
 def aggiorna_dati():
@@ -25,5 +20,5 @@ def get_dati():
     return jsonify(latest_data)
 
 if __name__ == '__main__':
-    port = int(os.environ.get('PORT', 5000))  # <-- AGGIUNTA questa parte
+    port = int(os.environ.get('PORT', 5000))
     app.run(host='0.0.0.0', port=port)
